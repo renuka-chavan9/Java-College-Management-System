@@ -1,9 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
-
 metadata:
   name: college-frontend
-
 spec:
   replicas: 2
 
@@ -19,34 +17,7 @@ spec:
     spec:
       containers:
         - name: college-frontend
-
-          image: aarushtechnologies/college-frontend:1.2
-
-          imagePullPolicy: Always
+          image: renukachavan/college-frontend:v2
 
           ports:
             - containerPort: 80
-
-          resources:
-            requests:
-              cpu: "100m"
-              memory: "128Mi"
-
-            limits:
-              cpu: "300m"
-              memory: "256Mi"
-
-          readinessProbe:
-            httpGet:
-              path: /
-              port: 80
-            initialDelaySeconds: 5
-            periodSeconds: 10
-
-          livenessProbe:
-            httpGet:
-              path: /
-              port: 80
-            initialDelaySeconds: 10
-            periodSeconds: 20
-

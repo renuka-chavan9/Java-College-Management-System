@@ -1,9 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
-
 metadata:
   name: college-app
-
 spec:
   replicas: 2
 
@@ -19,17 +17,25 @@ spec:
     spec:
       containers:
         - name: college-app
-
-          image: aarushtechnologies/college-app:1.0
-
-          imagePullPolicy: Always
+          image: renukachavan/college-app:v4
 
           ports:
             - containerPort: 8090
 
           env:
-            - name: MONGODB_URI
-              valueFrom:
-                configMapKeyRef:
-                  name: college-app-config
-                  key: MONGODB_URI
+            - name: SPRING_DATA_MONGODB_URI
+              value: "mongodb://mongodb-0.mongodb:27017,mongodb-1.mongodb:27017,mongodb-2.mongodb:27017/college?replicaSet=rs0"
+
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8090
+            initialDelaySeconds: 30
+            periodSeconds: 10
+
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8090
+            initialDelaySeconds: 45
+            periodSeconds: 15

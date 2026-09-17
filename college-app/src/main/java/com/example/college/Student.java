@@ -12,15 +12,18 @@ public class Student {
     private String name;
     private int age;
     private String city;
+    private String course;
+    private String email;
 
     public Student() {
     }
 
-    public Student(String id, String name, int age, String city) {
-        this.id = id;
+    public Student(String name, int age, String city, String course, String email) {
         this.name = name;
         this.age = age;
         this.city = city;
+        this.course = course;
+        this.email = email;
     }
 
     public String getId() {
@@ -53,6 +56,22 @@ public class Student {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public String getCourse() {
+        return course;
+    }
+
+    public void setCourse(String course) {
+        this.course = course;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
 

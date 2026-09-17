@@ -1,0 +1,4 @@
+college-app/target/
+college-frontend/node_modules/
+college-frontend/dist/
+*.swp

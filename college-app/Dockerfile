@@ -1,25 +1,9 @@
-# ==========================================
-# Base Image
-# ==========================================
-FROM amazoncorretto:17-alpine
+FROM eclipse-temurin:17-jre-alpine
 
-# ==========================================
-# Application Directory
-# ==========================================
 WORKDIR /app
 
-# ==========================================
-# Copy Spring Boot JAR
-# ==========================================
-COPY target/college-app-1.0.0.jar app.jar
+COPY target/*.jar app.jar
 
-# ==========================================
-# Expose Spring Boot Port
-# ==========================================
 EXPOSE 8090
 
-# ==========================================
-# Start Application
-# ==========================================
 ENTRYPOINT ["java", "-jar", "app.jar"]
-
